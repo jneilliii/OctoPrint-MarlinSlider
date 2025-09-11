@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "Marlin Slider Controls"
+version = "0.3.1"
+description = "Control your fans, feedrate and flowrate in Marlinfw Version 2+."
+authors = [
+    {name = "jneilliii", email = "jneilliii+github@gmail.com"}
+]
+readme = {file = "README.md", content-type = "text/markdown"}
+dynamic = [
+    "license"
+]
+
+requires-python = ">=3.7, <4"
+
+# any additional requirements (besides OctoPrint) should be listed here
+dependencies = []
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = [
+    "octoprint_marlinslider",
+    "octoprint_marlinslider.*"
+]
+
+[project.entry-points."octoprint.plugin"]
+marlinslider = "octoprint_marlinslider"
+
+[project.urls]
+Homepage = "https://github.com/jneilliii/OctoPrint-MarlinSlider"
+
+[project.optional-dependencies]
+develop = [
+    "go-task-bin"
+]
