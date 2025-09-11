@@ -301,7 +301,7 @@ class MarlinSliderPlugin(
             )
         )
 
-__plugin_name__ = "MarlinSlider Plugin"
+__plugin_name__ = "Marlin Slider Control"
 __plugin_pythoncompat__ = ">=3,<4"
 def __plugin_load__():
     global __plugin_implementation__
