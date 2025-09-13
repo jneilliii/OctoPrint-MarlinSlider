@@ -1,17 +1,12 @@
 # Marlin Slider Controls
 
-**TODO:** Describe what your plugin does.
+Originally created by CmdrCody51 (GitHub), this is a fork just to have the plugin available again for the community.
 
-## Setup
+Adds sliders to the controls page for setting the speed of your fans, feedrate and flowrate.
+With a settings page that allows limiting the fan's output power and min/max feedrates and flowrates.
 
-Install via the bundled [Plugin Manager](https://docs.octoprint.org/en/main/bundledplugins/pluginmanager.html)
-or manually using this URL:
+![screenshot](slider-tools.png)
 
-    https://github.com/jneilliii/OctoPrint-MarlinSlider/archive/master.zip
+![screenshot](settings.png)
 
-**TODO:** Describe how to install your plugin, if more needs to be done than just installing it via pip or through
-the plugin manager.
-
-## Configuration
-
-**TODO:** Describe your plugin's configuration options (if any).
+**NOTE:** When you are printing from an SD card that is attached directly to the printer, NONE of this works as the gcode does not pass through OctoPrint.
