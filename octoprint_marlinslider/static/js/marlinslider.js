@@ -69,7 +69,7 @@ $(function () {
         self.control.flowStopTitle = ko.observable(gettext("Reset current tool and flowrate override to 100%."));
 
         self.showNotify = function (self, options) {
-            options.title = "Marlin Slider Control";
+            options.title = "Marlin Slider Controls";
             options.delay = options.delay || self.settings.notifyDelay();
             options.type = options.type || "info";
             if (options.delay != "0") {
@@ -81,7 +81,7 @@ $(function () {
             self.speed = self.control.fanSpeed() * 255 / 100 ;
             return self.speed;
         });
-        
+
         self.control.decrement_fanSpeed = ko.pureComputed(function () {
             if (self.control.fanSpeed() > "0") {
                 self.control.fanSpeed(self.control.fanSpeed() - 1);
@@ -96,25 +96,25 @@ $(function () {
 
         self.control.checkFanSliderValue = ko.pureComputed(function () {
             if (self.control.fanSpeed() < self.settings.minFanSpeed() && self.control.fanSpeed() != "0") {
-                console.log("Marlin Slider Control Plugin: Fan " + self.control.fanSpeed() + "% is less than the minimum speed (" + self.settings.minFanSpeed() + "%), increasing.");
+                console.log("Marlin Slider Controls Plugin: Fan " + self.control.fanSpeed() + "% is less than the minimum speed (" + self.settings.minFanSpeed() + "%), increasing.");
                 self.control.fanSpeed(self.settings.minFanSpeed());
                 var options = {
                     hide: true,
                     text: gettext('Fan speed increased to meet minimum speed requirement.'),
                     addclass:  'fan_speed_notice_low',
-                }
+                };
                 if ($(".fan_speed_notice_low").length <1) {
                     self.showNotify(self, options);
                 }
             }
             else if (self.control.fanSpeed() > self.settings.maxFanSpeed()) {
-                console.log("Marlin Sluder Control Plugin: Fan " + self.control.fanSpeed() + "% is more than the maximum speed (" + self.settings.maxFanSpeed() + "%), decreasing.");
+                console.log("Marlin Slider Controls Plugin: Fan " + self.control.fanSpeed() + "% is more than the maximum speed (" + self.settings.maxFanSpeed() + "%), decreasing.");
                 self.control.fanSpeed(self.settings.maxFanSpeed());
                 var options = {
                     hide: true,
                     text: gettext('Fan speed decreased to meet maximum speed requirement.'),
                     addclass:  'fan_speed_notice_high',
-                }
+                };
                 if ($(".fan_speed_notice_high").length <1) {
                     self.showNotify(self, options);
                 }
@@ -123,25 +123,25 @@ $(function () {
 
         self.control.checkFeedSliderValue = ko.pureComputed(function () {
             if (self.control.feedRate() < self.settings.minFeedR()) {
-                console.log("Marlin Slider Control Plugin: Feedrate " + self.control.feedRate() + "% is less than the minimum feedrate (" + self.settings.minFeedR() + "%), increasing.");
+                console.log("Marlin Slider Controls Plugin: Feedrate " + self.control.feedRate() + "% is less than the minimum feedrate (" + self.settings.minFeedR() + "%), increasing.");
                 self.control.feedRate(self.settings.minFeedR());
                 var options = {
                     hide: true,
                     text: gettext('Feedrate increased to meet minimum feed requirement.'),
                     addclass:  'feedrate_notice_low',
-                }
+                };
                 if ($(".feedrate_notice_low").length <1) {
                     self.showNotify(self, options);
                 }
             }
             else if (self.control.feedRate() > self.settings.maxFeedR()) {
-                console.log("Marlin Sluder Control Plugin: Feedrate " + self.control.feedRate() + "% is more than the maximum feedrate (" + self.settings.maxFeedR() + "%), decreasing.");
+                console.log("Marlin Slider Controls Plugin: Feedrate " + self.control.feedRate() + "% is more than the maximum feedrate (" + self.settings.maxFeedR() + "%), decreasing.");
                 self.control.feedRate(self.settings.maxFeedR());
                 var options = {
                     hide: true,
                     text: gettext('Feedrate decreased to meet maximum feed requirement.'),
                     addclass:  'feedrate_notice_high',
-                }
+                };
                 if ($(".feedrate_notice_high").length <1) {
                     self.showNotify(self, options);
                 }
@@ -150,25 +150,25 @@ $(function () {
 
         self.control.checkFlowSliderValue = ko.pureComputed(function () {
             if (self.control.flowRate() < self.settings.minFlowR()) {
-                console.log("Marlin Slider Control Plugin: Flowrate " + self.control.flowRate() + "% is less than the minimum flowrate (" + self.settings.minFlowR() + "%), increasing.");
+                console.log("Marlin Slider Controls Plugin: Flowrate " + self.control.flowRate() + "% is less than the minimum flowrate (" + self.settings.minFlowR() + "%), increasing.");
                 self.control.flowRate(self.settings.minFlowR());
                 var options = {
                     hide: true,
                     text: gettext('Flowrate increased to meet minimum flow requirement.'),
                     addclass:  'flowrate_notice_low',
-                }
+                };
                 if ($(".flowrate_notice_low").length <1) {
                     self.showNotify(self, options);
                 }
             }
             else if (self.control.flowRate() > self.settings.maxFlowR()) {
-                console.log("Marlin Sluder Control Plugin: Flowrate " + self.control.flowRate() + "% is more than the maximum flowrate (" + self.settings.maxFlowR() + "%), decreasing.");
+                console.log("Marlin Slider Controls Plugin: Flowrate " + self.control.flowRate() + "% is more than the maximum flowrate (" + self.settings.maxFlowR() + "%), decreasing.");
                 self.control.FlowRate(self.settings.maxFlowR());
                 var options = {
                     hide: true,
                     text: gettext('Flowrate decreased to meet maximum flow requirement.'),
                     addclass:  'flowrate_notice_high',
-                }
+                };
                 if ($(".flowrate_notice_high").length <1) {
                     self.showNotify(self, options);
                 }
@@ -223,11 +223,11 @@ $(function () {
                 delay: 1000*30,
                 text: gettext('CAUTION!! Fan speed commands are now being ignored! \n This includes commands sent via gcode and the terminal!'),
                 addclass:  'fan_speed_notice_fanlocked',
-            }
+            };
             if (self.settings.lockfan() && $(".fan_speed_notice_fanlocked").length <1) {
                 self.showNotify(self, options);
             }
-        }
+        };
 
         //disables the on/off buttons if the lock is enabled
         self.control.islocked = ko.pureComputed(function () {
@@ -254,25 +254,25 @@ $(function () {
             var hold = self.control.displayfeedRate() + (self.control.baseFeedRate() - 100);
             self.control.baseFeedRate( self.control.baseFeedRate() + 100 );
             self.control.displayfeedRate( hold - (self.control.baseFeedRate() - 100))
-        }
-        
+        };
+
         self.control.displayFeedDown = function () {
             var hold = self.control.displayfeedRate() + (self.control.baseFeedRate() - 100);
             self.control.baseFeedRate( self.control.baseFeedRate() - 100 );
             self.control.displayfeedRate( hold - (self.control.baseFeedRate() - 100))
-        }
-        
+        };
+
         self.control.displayFlowUp = function () {
             var hold = self.control.displayflowRate() + (self.control.baseFlowRate() - 100);
             self.control.baseFlowRate( self.control.baseFlowRate() + 100 );
             self.control.displayflowRate( hold - (self.control.baseFlowRate() - 100))
-        }
-        
+        };
+
         self.control.displayFlowDown = function () {
             var hold = self.control.displayflowRate() + (self.control.baseFlowRate() - 100);
             self.control.baseFlowRate( self.control.baseFlowRate() - 100 );
             self.control.displayflowRate( hold - (self.control.baseFlowRate() - 100))
-        }
+        };
 
         try {
             // find the old stuff
@@ -285,11 +285,7 @@ $(function () {
             $("#control-jog-general").find("button").eq(2).attr("id", "fan-off");
             // and replace it
             if ($("#touch body").length == 0) {
-                $('#ms-tool').replaceWith("\
-                    <button class=\"btn dropdown-toggle\" data-toggle=\"dropdown\" \
-                    data-bind=\"enable: isOperational() && !isPrinting() && !isPaused()\" id=\"ms-tool\">&nbsp;Tool&nbsp;\
-                    <span data-bind=\"text: toolNum()\"></span>&nbsp;&nbsp;<span class=\"caret\"></span></button>\
-                ");
+                $('#ms-tool').replaceWith($("#marlinslider_toolbox button.ms-tool")).attr("id", "ms-tool");
                 $('#control-jog-extrusion .text-info').remove();
                 //remove original fan on/off buttons
                 $("#fan-on").remove();
@@ -297,70 +293,10 @@ $(function () {
                 $("#control-jog-feedrate.jog-panel").remove();
                 $("#control-jog-flowrate").remove();
 
-                $("#control-jog-general").find("button").eq(0).before("\
-                    <button class=\"btn\" id=\"fan-minus\" style=\"margin-right: 4px\" data-bind=\"enable: isOperational() && loginState.isUser() \
-                    && !islocked(), click: function() { $root.decrement_fanSpeed() } \"><i class=\"fas fa-arrow-left\"></i></button><input type=\"number\" \
-                    style=\"width: 95px; margin-right: 4px\" data-bind=\"slider: {min: 00, max: 100, step: 1, value: fanSpeed, tooltip: 'hide'}\">\
-                    <button class=\"btn\" id=\"fan-plus\" data-bind=\"enable: isOperational() && loginState.isUser() && !islocked(), click: \
-                    function() { $root.increment_fanSpeed() } \"><i class=\"fas fa-arrow-right\"></i></button><button class=\"btn btn-block control-box\" id=\"fan-on\" \
-                    style=\"margin-top: 2px\" data-bind=\"enable: isOperational() && loginState.isUser() && !islocked(),\
-                    click: function() { $root.sendFanSpeed() }\">" + gettext("Fan speed") + ":<span data-bind=\"text: fanSpeed() + '%'\"></span></button>\
-                    <div class=\"btn-group\">\
-                        <button class=\"btn\" id=\"fan-off\" data-bind=\"enable: isOperational() && loginState.isUser() && !islocked(), click: \
-                        function() { $root.sendCustomCommand({ type: 'command', commands: ['M106 S0'] }) }\">" + gettext("Fan off") + "</button>\
-                        <button class=\"btn\" id=\"fan-lock\" data-bind=\"enable: isOperational() && loginState.isUser(), click: \
-                        function() { $root.lockFanInput() }, attr: { title: lockTitle } \">\
-                            <i class=\"fa fa-unlock\" data-bind=\"css: {'fa-lock': islocked(), 'fa-unlock': !islocked()}\"></i></button>\
-                    </div>\
-                ");
-
-                $("#control-jog-custom").before("\
-                    <div id=\"control-feedrate-custom\" class=\"jog-panel\" data-bind=\"visible: loginState.hasPermissionKo(access.permissions.CONTROL)\">\
-                    <div id=\"FeedDownFeedSliderFeedUp\" style=\"display: inline-block;\">\
-                        <span align=\"center\"><span data-bind=\"text: baseFeedRate()\"></span></span><br>\
-                        <button class=\"btn\" id=\"feeddown\" data-bind=\"enable: isOperational() && loginState.isUser() && !feedDowndone(),\
-                            click: function() { $root.displayFeedDown() } \"><i class=\"fas fa-arrow-down\"></i></button>\
-                        <input type=\"number\" style=\"width: 150px\" data-bind=\"slider: {min: 0, max: 200, step: 1, value: displayfeedRate, tooltip: 'hide'}\">\
-                        <button class=\"btn\" id=\"feedup\" data-bind=\"enable: isOperational() && loginState.isUser() && !feedUpdone(),\
-                            click: function() { $root.displayFeedUp() } \"><i class=\"fas fa-arrow-up\"></i></button>\
-                        </div><br><div id=\"FeedSendFeedCheck\" class=\"btn-group\" style=\"margin-top: 2px\">\
-                        <button class=\"btn\" id=\"feedcheck\" style=\"margin-right: 8px\" data-bind=\"enable: isOperational() && loginState.isUser(), click: \
-                        function() { $root.sendCustomCommand({ type: 'command', commands: ['M220'] }) }, attr: { title: feedCheckTitle } \">\
-                            <i class=\"fas fa-sync\"></i></button>\
-                        <button class=\"btn\" id=\"feed-set\" style=\"width: 67%; margin-right: 8px\" data-bind=\"enable: isOperational() && \
-                        loginState.isUser(), click: function() { $root.sendFeedR() }\">" + gettext("Feedrate") + ":\
-                        <span data-bind=\"text: (displayfeedRate() + (baseFeedRate() - 100)) + '%'\">\
-                        </span></button>\
-                        <button class=\"btn\" id=\"feed-stop\" data-bind=\"enable: isOperational() && loginState.isUser(), click: \
-                        function() { $root.sendCustomCommand({ type: 'command', commands: ['M220 S100'] }) }, attr: { title: feedStopTitle } \">\
-                            <i class=\"fas fa-radiation\"></i></button>\
-                        </div>\
-                    </div>\
-                    <div id=\"control-flowrate-custom\" class=\"jog-panel\" data-bind=\"visible: loginState.hasPermissionKo(access.permissions.CONTROL)\">\
-                    <div id=\"FlowDownFlowSliderFlowUp\" style=\"vertical-align: top; display: inline-block;\">\
-                        <span align=\"center\"><span data-bind=\"text: baseFlowRate()\"></span></span><br>\
-                        <button class=\"btn\" id=\"flowdown\" data-bind=\"enable: isOperational() && loginState.isUser() && !flowDowndone(),\
-                            click: function() { $root.displayFlowDown() } \"><i class=\"fas fa-arrow-down\"></i></button>\
-                        <input type=\"number\" style=\"width: 150px\" data-bind=\"slider: {min: 0, max: 200, step: 1, value: displayflowRate, tooltip: 'hide'}\">\
-                        <button class=\"btn\" id=\"flowup\" data-bind=\"enable: isOperational() && loginState.isUser() && !flowUpdone(),\
-                            click: function() { $root.displayFlowUp() } \"><i class=\"fas fa-arrow-up\"></i></button>\
-                        </div><br><div id=\"FlowSendFlowCheck\" class=\"btn-group\" style=\"margin-top: 2px\">\
-                        <button class=\"btn\" id=\"flowcheck\" style=\"margin-right: 8px\" data-bind=\"enable: isOperational() && loginState.isUser(), click: \
-                        function() { $root.sendCustomCommand({ type: 'command', commands: ['M221'] }) }, attr: { title: flowCheckTitle } \">\
-                            <i class=\"fas fa-sync\"></i></button>\
-                        <button class=\"btn\" id=\"flow-set\" style=\"width: 67%; margin-right: 8px\" data-bind=\"enable: isOperational() && \
-                        loginState.isUser(), click: function() { $root.sendFlowR() }\">" + gettext("Flowrate") + ":\
-                        <span data-bind=\"text: (displayflowRate() + (baseFlowRate() - 100)) + '%'\">\
-                        </span></button>\
-                        <button class=\"btn\" id=\"flow-stop\" data-bind=\"enable: isOperational() && loginState.isUser(), click: \
-                        function() { $root.sendCustomCommand({ type: 'command', commands: ['M221 S100'] }) }, attr: { title: flowStopTitle } \">\
-                            <i class=\"fas fa-radiation\"></i></button>\
-                        </div>\
-                    </div>\
-                  </div>\
-                ");
-            }
-        }
+                // move custom UI from marlinslider.jinja2 into control tab
+                $("#control-jog-general").find("button").eq(0).before($("#control-jog-general-custom"));
+                $("#control-jog-custom").before([$("#control-feedrate-custom"), $("#control-flowrate-custom")]);
+            }        }
 
         catch (error) {
             console.log(error);
@@ -399,7 +335,7 @@ $(function () {
                     delay: 1000*10,
                     text: gettext('CAUTION!! Hard limits exceeded!\nValues have been modified!\nVerify settings again!'),
                     addclass:  '.hard_limits_fault',
-                }
+                };
                 self.showNotify(self, options);
             }
             try {
@@ -425,7 +361,7 @@ $(function () {
             catch (error) {
                 console.log(error);
             }
-        }
+        };
 
         self.onDataUpdaterPluginMessage = function(plugin, data) {
             if (plugin != "marlinslider") {
@@ -462,7 +398,7 @@ $(function () {
                                hide: true,
                                text: gettext('FAULT!! Use of Fan I word on uninitialized material!'),
                                addclass:  'fan_construct_fault',
-                            }
+                            };
                             self.showNotify(self, options);
                         }
                         // I with popup on S P T alert - P Are we sure??
@@ -472,7 +408,7 @@ $(function () {
                                hide: true,
                                text: gettext('CAUTION!! Use of I word invalidates S P or T words!'),
                                addclass:  'fan_construct_fault',
-                            }
+                            };
                             self.showNotify(self, options);
                         }
                         else {
@@ -491,7 +427,7 @@ $(function () {
                                hide: true,
                                text: gettext('CAUTION!! Use of T word requires P word and is invalidated by I words!'),
                                addclass:  'fan_construct_fault',
-                            }
+                            };
                             self.showNotify(self, options);
                         }
                         else {
@@ -580,7 +516,7 @@ $(function () {
                 }
                 self.control.lastSentTool = data.toolNum;
             }
-        }
+        };
 
         self.onBeforeBinding = function () {
             self.settings.defaultFanSpeed(parseInt(self.settings.settings.plugins.marlinslider.defaultFanSpeed()));
@@ -629,25 +565,18 @@ $(function () {
             else {
                 self.control.flowRate(self.settings.defaultFlowR());
             }
-        }
+        };
 
         //update settings in case user changes them, otherwise a refresh of the UI is required
         self.onSettingsHidden = function () {
             self.updateSettings();
-        }
+        };
     }
-    /* view model class, parameters for constructor, container to bind to
-     * Please see http://docs.octoprint.org/en/master/plugins/viewmodels.html#registering-custom-viewmodels for more details
-     * and a full list of the available options.
-     */
+
     OCTOPRINT_VIEWMODELS.push({
         construct: MarlinSliderPluginViewModel,
-        // ViewModels your plugin depends on, e.g. loginStateViewModel, settingsViewModel, ...
-        dependencies: [
-            "settingsViewModel", "controlViewModel", "loginStateViewModel"
-        ],
+        dependencies: ["settingsViewModel", "controlViewModel", "loginStateViewModel"],
         optional: [],
-        // Elements to bind to, e.g. #settings_plugin_marlinslider, #tab_plugin_marlinslider, ...
         elements: []
     });
 });

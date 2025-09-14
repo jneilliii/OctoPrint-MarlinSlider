@@ -1,0 +1,42 @@
+<div id="marlinslider_toolbox">
+    <div id="control-feedrate-custom" class="jog-panel" data-bind="visible: loginState.hasPermissionKo(access.permissions.CONTROL)">
+        <div id="FeedDownFeedSliderFeedUp" style="display: inline-block;">
+            <span align="center"><span data-bind="text: baseFeedRate()"></span></span><br>
+            <button class="btn" id="feeddown" data-bind="enable: isOperational() && loginState.isUser() && !feedDowndone(), click: function() { $root.displayFeedDown() } "><i class="fas fa-arrow-down"></i></button>
+            <input type="number" style="width: 150px" data-bind="slider: {min: 0, max: 200, step: 1, value: displayfeedRate, tooltip: 'hide'}">
+            <button class="btn" id="feedup" data-bind="enable: isOperational() && loginState.isUser() && !feedUpdone(), click: function() { $root.displayFeedUp() } "><i class="fas fa-arrow-up"></i></button>
+        </div><br>
+        <div id="FeedSendFeedCheck" class="row-fluid" style="margin-top: 2px">
+            <button class="btn pull-left" id="feedcheck" data-bind="enable: isOperational() && loginState.isUser(), click: function() { $root.sendCustomCommand({ type: 'command', commands: ['M220'] }) }, attr: { title: feedCheckTitle } "><i class="fas fa-sync"></i></button>
+            <button class="btn" id="feed-set" data-bind="enable: isOperational() && loginState.isUser(), click: function() { $root.sendFeedR() }">{{ _('Feedrate') }} <span data-bind="text: (displayfeedRate() + (baseFeedRate() - 100)) + '%'"></span></button>
+            <button class="btn pull-right" id="feed-stop" data-bind="enable: isOperational() && loginState.isUser(), click: function() { $root.sendCustomCommand({ type: 'command', commands: ['M220 S100'] }) }, attr: { title: feedStopTitle } "><i class="fas fa-radiation"></i></button>
+        </div>
+    </div>
+    <div id="control-flowrate-custom" class="jog-panel" data-bind="visible: loginState.hasPermissionKo(access.permissions.CONTROL)">
+        <div id="FlowDownFlowSliderFlowUp" style="vertical-align: top; display: inline-block;">
+            <span align="center"><span data-bind="text: baseFlowRate()"></span></span><br>
+            <button class="btn" id="flowdown" data-bind="enable: isOperational() && loginState.isUser() && !flowDowndone(), click: function() { $root.displayFlowDown() } "><i class="fas fa-arrow-down"></i></button>
+            <input type="number" style="width: 150px" data-bind="slider: {min: 0, max: 200, step: 1, value: displayflowRate, tooltip: 'hide'}">
+            <button class="btn" id="flowup" data-bind="enable: isOperational() && loginState.isUser() && !flowUpdone(), click: function() { $root.displayFlowUp() } "><i class="fas fa-arrow-up"></i></button>
+        </div><br>
+        <div id="FlowSendFlowCheck" class="row-fluid" style="margin-top: 2px">
+            <button class="btn pull-left" id="flowcheck" data-bind="enable: isOperational() && loginState.isUser(), click: function() { $root.sendCustomCommand({ type: 'command', commands: ['M221'] }) }, attr: { title: flowCheckTitle } "><i class="fas fa-sync"></i></button>
+            <button class="btn" id="flow-set" data-bind="enable: isOperational() && loginState.isUser(), click: function() { $root.sendFlowR() }">{{ _('Flowrate') }} <span data-bind="text: (displayflowRate() + (baseFlowRate() - 100)) + '%'"></span></button>
+            <button class="btn pull-right" id="flow-stop" data-bind="enable: isOperational() && loginState.isUser(), click: function() { $root.sendCustomCommand({ type: 'command', commands: ['M221 S100'] }) }, attr: { title: flowStopTitle } "><i class="fas fa-radiation"></i></button>
+        </div>
+    </div>
+    <div id="control-jog-general-custom">
+        <button class="btn" id="fan-minus" data-bind="enable: isOperational() && loginState.isUser() && !islocked(), click: function() { $root.decrement_fanSpeed() } "><i class="fas fa-arrow-left"></i></button>
+        <input type="number" style="width: 95px; margin-right: 4px" data-bind="slider: {min: 00, max: 100, step: 1, value: fanSpeed, tooltip: 'hide'}">
+        <button class="btn" id="fan-plus" data-bind="enable: isOperational() && loginState.isUser() && !islocked(), click: function() { $root.increment_fanSpeed() } "><i class="fas fa-arrow-right"></i></button>
+        <button class="btn btn-block control-box" id="fan-on" style="margin-top: 2px" data-bind="enable: isOperational() && loginState.isUser() && !islocked(), click: function() { $root.sendFanSpeed() }">{{ _('Fan speed') }} <span data-bind="text: fanSpeed() + '%'"></span></button>
+        <div class="btn-group">
+            <button class="btn" id="fan-off" data-bind="enable: isOperational() && loginState.isUser() && !islocked(), click: function() { $root.sendCustomCommand({ type: 'command', commands: ['M106 S0'] }) }">{{ _('Fan off') }}</button>
+            <button class="btn" id="fan-lock" data-bind="enable: isOperational() && loginState.isUser(), click: function() { $root.lockFanInput() }, attr: { title: lockTitle } "><i class="fa fa-unlock" data-bind="css: {'fa-lock': islocked(), 'fa-unlock': !islocked()}"></i></button>
+        </div>
+    </div>
+    <button class="btn dropdown-toggle ms-tool" data-toggle="dropdown" data-bind="enable: isOperational() && !isPrinting() && !isPaused()" id="ms-tool">&nbsp;Tool&nbsp;<span data-bind="text: toolNum()"></span>&nbsp;&nbsp;<span class="caret"></span></button>
+</div>
+
+
+

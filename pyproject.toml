@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "Marlin-Slider-Controls"
-version = "0.3.1"
+version = "0.3.2"
 description = "Control your fans, feedrate and flowrate in Marlinfw Version 2+."
 authors = [
     {name = "jneilliii", email = "jneilliii+github@gmail.com"}

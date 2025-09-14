@@ -1,3 +1,10 @@
 div#settings_plugin_marlinslider div {
     width: 90%;
 }
+
+#control-jog-general-custom div.slider.slider-horizontal, #control-feedrate-custom div.slider.slider-horizontal, #control-flowrate-custom div.slider.slider-horizontal {
+    margin-left: 5px;
+    margin-right: 7px;
+}
+
+
