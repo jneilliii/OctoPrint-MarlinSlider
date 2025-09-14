@@ -3,7 +3,7 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "Marlin-Slider-Controls"
+name = "OctoPrint-MarlinSlider"
 version = "0.3.2"
 description = "Control your fans, feedrate and flowrate in Marlinfw Version 2+."
 authors = [
